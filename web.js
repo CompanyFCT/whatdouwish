@@ -23,7 +23,7 @@ app.set('name', 'Buy Me');
 app.set('app_id', '516291248419238');
 
 // listen to the PORT given to us in the environment
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 80;
 
 app.listen(port, function() {
   console.log("Listening on " + port);
