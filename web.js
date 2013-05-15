@@ -1,3 +1,5 @@
+//FIXME CREATE FILE CONFIG OR FOREMAN TO: SESSION_SECRET, APP_ID, APP_SECRET_ID
+
 var async   = require('async');
 var express = require('express');
 var util    = require('util');
