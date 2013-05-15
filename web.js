@@ -11,12 +11,14 @@ var app = express.createServer(
   // set this to a secret value to encrypt session cookies
   express.session({ secret: process.env.SESSION_SECRET || 'secret123' }),
   require('faceplate').middleware({
-    name: 'Buy Me',
-    app_id: process.env.FACEBOOK_APP_ID,
-    secret: process.env.FACEBOOK_SECRET,
+    app_id: '516291248419238',
+    secret: '40d466313102965fddb33b8ca44b6f9c',
     scope:  'user_likes,user_photos,user_photo_video_tags'
   })
 );
+
+app.set('name', 'Buy Me');
+app.set('app_id', '516291248419238');
 
 // listen to the PORT given to us in the environment
 var port = process.env.PORT || 3000;

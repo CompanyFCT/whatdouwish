@@ -17,6 +17,14 @@
     <!-- over facebook.  You should fill these tags in with      -->
     <!-- your data.  To learn more about Open Graph, visit       -->
     <!-- 'https://developers.facebook.com/docs/opengraph/'       -->
+    <meta property="og:title" content="<%= settings.name %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= url() %>" />
+    <meta property="og:image" content="<%= url('/logo.png') %>" />
+    <meta property="og:site_name" content="<%= settings.name %>" />
+    <meta property="og:description" content="My first app" />
+    <meta property="fb:app_id" content="<%= settings.app_id %>" />
+
     <script type="text/javascript" src="/scripts/jquery.min.js"></script>
 
     <script type="text/javascript">
@@ -88,7 +96,7 @@
     <script type="text/javascript">
       window.fbAsyncInit = function() {
         FB.init({
-          appId      : '<%= app_id %>', // App ID
+          appId      : '<%= settings.app_id %>', // App ID
           channelUrl : '<%= url_no_scheme('/channel.html') %>', // Channel File
           status     : true, // check login status
           cookie     : true, // enable cookies to allow the server to access the session
