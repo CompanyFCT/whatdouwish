@@ -2,8 +2,7 @@ var http = require('http');
 
 http.createServer(function (request, response) {
   response.writeHead(200, {'Content-Type': 'application/json'});
-  var objToJson = {'message':'hello world'};
-  response.write(JSON.stringify(objToJson));
+  response.write(JSON.stringify({'message':'hello world'}));
   response.end();
 }).listen(8124);
 
