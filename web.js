@@ -4,7 +4,6 @@ var util    = require('util');
 
 // create an express webserver
 var app = express.createServer(
-  {name: "Buy Me"},
   express.logger(),
   express.static(__dirname + '/public'),
   express.bodyParser(),
@@ -24,6 +23,8 @@ var port = process.env.PORT || 3000;
 app.listen(port, function() {
   console.log("Listening on " + port);
 });
+
+app.name = "Buy Me";
 
 app.dynamicHelpers({
   'host': function(req, res) {
