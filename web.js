@@ -4,6 +4,7 @@ var util    = require('util');
 
 // create an express webserver
 var app = express.createServer(
+  {name: "Buy Me"},
   express.logger(),
   express.static(__dirname + '/public'),
   express.bodyParser(),
@@ -11,7 +12,6 @@ var app = express.createServer(
   // set this to a secret value to encrypt session cookies
   express.session({ secret: process.env.SESSION_SECRET || 'secret123' }),
   require('faceplate').middleware({
-    name: 'Buy Me',
     app_id: process.env.FACEBOOK_APP_ID,
     secret: process.env.FACEBOOK_SECRET,
     scope:  'user_likes,user_photos,user_photo_video_tags'
