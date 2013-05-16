@@ -20,7 +20,11 @@ app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
+<<<<<<< HEAD
 app.use(require('stylus').middleware(__dirname + '/public'));
+=======
+  app.use(require('stylus').middleware(__dirname + '/public'));
+>>>>>>> dev
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only

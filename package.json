@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "BuyMe",
+=======
+  "name": "application-name",
+>>>>>>> dev
   "version": "0.0.1",
   "private": true,
   "scripts": {
