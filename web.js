@@ -29,7 +29,10 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+<<<<<<< HEAD
 app.post('/', routes.index);
+=======
+>>>>>>> config project. remove all heroku template.
 app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){

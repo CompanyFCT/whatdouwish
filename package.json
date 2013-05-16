@@ -9,9 +9,12 @@
     "express": "3.2.4",
     "ejs": "0.8.4",
     "stylus": "0.32.1"
+<<<<<<< HEAD
   },
   "engines": {
     "node": "0.10.6",
     "npm":  "1.2.18"
+=======
+>>>>>>> config project. remove all heroku template.
   }
 }
