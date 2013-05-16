@@ -1,13 +1,13 @@
 {
-  "name":    "facebook-template-node",
+  "name": "BuyMe",
   "version": "0.0.1",
-
-  "description": "Template app for Heroku / Facebook integration, Node.js language",
-
+  "private": true,
+  "scripts": {
+    "start": "node web.js"
+  },
   "dependencies": {
-    "async":     "0.1.x",
-    "ejs":       "0.8.4",
-    "express":   "3.x",
-    "faceplate": "0.6.x"
+    "express": "3.2.4",
+    "ejs": "0.8.4",
+    "stylus": "0.32.1"
   }
 }
