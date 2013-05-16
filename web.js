@@ -1,108 +1,36 @@
-//FIXME CREATE FILE CONFIG OR FOREMAN TO: SESSION_SECRET, APP_ID, APP_SECRET_ID
 
-var async   = require('async');
-var express = require('express');
-var util    = require('util');
+/**
+ * Module dependencies.
+ */
 
-// create an express webserver
-var app = express.createServer(
-  express.logger(),
-  express.static(__dirname + '/public'),
-  express.bodyParser(),
-  express.cookieParser(),
-  // set this to a secret value to encrypt session cookies
-  express.session({ secret: process.env.SESSION_SECRET || 'secret123' }),
-  require('faceplate').middleware({
-    app_id: '516291248419238',
-    secret: '40d466313102965fddb33b8ca44b6f9c',
-    scope:  'user_likes,user_photos,user_photo_video_tags'
-  })
-);
+var express = require('express')
+  , routes = require('./routes')
+  , user = require('./routes/user')
+  , http = require('http')
+  , path = require('path');
 
-app.set('name', 'Buy Me');
-app.set('app_id', '516291248419238');
+var app = express();
 
-// listen to the PORT given to us in the environment
-var port = process.env.PORT || 3000;
+// all environments
+app.set('port', process.env.PORT || 3000);
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.use(app.router);
+  app.use(require('stylus').middleware(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.listen(port, function() {
-  console.log("Listening on " + port);
-});
-
-app.dynamicHelpers({
-  'host': function(req, res) {
-    return req.headers['host'];
-  },
-  'scheme': function(req, res) {
-    return req.headers['x-forwarded-proto'] || 'http';
-  },
-  'url': function(req, res) {
-    return function(path) {
-      return app.dynamicViewHelpers.scheme(req, res) + app.dynamicViewHelpers.url_no_scheme(req, res)(path);
-    }
-  },
-  'url_no_scheme': function(req, res) {
-    return function(path) {
-      return '://' + app.dynamicViewHelpers.host(req, res) + (path || '');
-    }
-  },
-});
-
-function render_page(req, res) {
-  req.facebook.app(function(err, app) {
-    req.facebook.me(function(user) {
-      res.render('index.ejs', {
-        layout:    false,
-        req:       req,
-        app:       app,
-        user:      user
-      });
-    });
-  });
+// development only
+if ('development' == app.get('env')) {
+  app.use(express.errorHandler());
 }
 
-function handle_facebook_request(req, res) {
+app.get('/', routes.index);
+app.get('/users', user.list);
 
-  // if the user is logged in
-  if (req.facebook.token) {
-
-    async.parallel([
-      function(cb) {
-        // query 4 friends and send them to the socket for this socket id
-        req.facebook.get('/me/friends', { limit: 4 }, function(friends) {
-          req.friends = friends;
-          cb();
-        });
-      },
-      function(cb) {
-        // query 16 photos and send them to the socket for this socket id
-        req.facebook.get('/me/photos', { limit: 16 }, function(photos) {
-          req.photos = photos;
-          cb();
-        });
-      },
-      function(cb) {
-        // query 4 likes and send them to the socket for this socket id
-        req.facebook.get('/me/likes', { limit: 4 }, function(likes) {
-          req.likes = likes;
-          cb();
-        });
-      },
-      function(cb) {
-        // use fql to get a list of my friends that are using this app
-        req.facebook.fql('SELECT uid, name, is_app_user, pic_square FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1', function(result) {
-          req.friends_using_app = result;
-          cb();
-        });
-      }
-    ], function() {
-      render_page(req, res);
-    });
-
-  } else {
-    render_page(req, res);
-  }
-}
-
-app.get('/', handle_facebook_request);
-app.post('/', handle_facebook_request);
+http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
