@@ -1,18 +1,9 @@
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html> -->
-
+<!DOCTYPE html>
 <html xmlns:fb="http://ogp.me/ns/fb#" lang="en">
   <head>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
+
     <meta charset="utf-8" />
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" /> -->
 
@@ -74,13 +65,34 @@
       
         <ul>
           <% for(var j=0; j<5; j++) {%>
-            <li><img src="images/camiseta.jpg"/></li>
+            <section>
+              <li>
+                <img src="images/camiseta.jpg"/>
+                <footer>
+                  <h3>
+                    <p id="product">Camiseta Vans AMIGO</p>
+                    <p id="oldPrice">DE: R$ 79,99</p>
+                    <p id="price">POR: R$ 55,90</p>
+                    <p id="discount">OU ATÉ 2X DE R$ 27,95</p>
+                  </h3>
+                </footer>
+              </li>
+            </section>
           <% } %>
         </ul>
       
         <ul>
           <% for(var i=0; i<5; i++) {%>
-            <li><img src="images/camiseta.jpg"/></li>
+            <section>
+              <li>
+                <img src="images/camiseta.jpg"/>
+                <footer>
+                  <h3>
+                    <p id="product">Camiseta Vans AMIGO</p>
+                  </h3>
+                </footer>
+              </li>
+            </section>
           <% } %>
         </ul>
 

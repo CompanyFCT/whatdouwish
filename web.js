@@ -7,9 +7,8 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
-  , http = require('http')
+  // , http = require('http')
+  , routes = require('./controllers/routes')
   , locals = require('./base/locals').setLocals
   , path = require('path');
 
@@ -35,14 +34,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // development only
+
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
-app.post('/', routes.index);
-app.get('/users', user.list);
 
-http.createServer(app).listen(app.get('port'), function(){
+//mappging routes
+
+app.get('/', routes.index._);
+// app.get('/users', routes.user.list);
+// app.post('/', routes.index);
+
+
+// server listening
+app.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+// http.createServer(app).listen(app.get('port'), function(){
+//   console.log('Express server listening on port ' + app.get('port'));
+// });
