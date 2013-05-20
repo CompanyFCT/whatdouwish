@@ -7,7 +7,7 @@
  */
 
 var express = require('express')
-  // , http = require('http')
+  , mongoose = require('mongoose')
   , routes = require('./controllers/routes')
   , locals = require('./base/locals').setLocals
   , path = require('path');
@@ -17,12 +17,10 @@ var app = express();
 
 
 // all environments
-
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.set('facebook', {name: 'BuyMe', app_id: '516291248419238', app_secret_id: '40d466313102965fddb33b8ca44b6f9c'});
-
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
@@ -34,17 +32,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // development only
-
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
 
 //mappging routes
-
 app.get('/', routes.index._);
 // app.get('/users', routes.user.list);
 // app.post('/', routes.index);
+
+
+//mongodb
+mongoose.connect('mongodb://localhost/buyme');
 
 
 // server listening
@@ -52,6 +52,3 @@ app.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-// http.createServer(app).listen(app.get('port'), function(){
-//   console.log('Express server listening on port ' + app.get('port'));
-// });
