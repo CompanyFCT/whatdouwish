@@ -56,8 +56,8 @@
       }(document, 'script', 'facebook-jssdk'));
     </script>
 
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <!-- <h1></h1>
+    <p>Welcome to </p> -->
 
     <!-- 160 x 192-->
 
@@ -70,9 +70,9 @@
                 <img src="images/camiseta.jpg"/>
                 <footer>
                   <h3>
-                    <p id="product">Camiseta Vans AMIGO</p>
-                    <p id="oldPrice">DE: R$ 79,99</p>
-                    <p id="price">POR: R$ 55,90</p>
+                    <p id="product"><%= name %></p>
+                    <p id="oldPrice">DE: R$ <%= oldPrice %></p>
+                    <p id="price">POR: R$ <%= price %></p>
                     <p id="discount">OU ATÉ 2X DE R$ 27,95</p>
                   </h3>
                 </footer>
