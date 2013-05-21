@@ -7,7 +7,7 @@
  */
 
 var express = require('express')
-  // , mongoose = require('mongoose')
+  , mongoose = require('mongoose')
   , routes = require('./controllers/routes')
   , locals = require('./base/locals').setLocals
   , path = require('path');
