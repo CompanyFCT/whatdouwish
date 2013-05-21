@@ -7,7 +7,7 @@
  */
 
 var express = require('express')
-  , mongoose = require('mongoose')
+  // , mongoose = require('mongoose')
   , routes = require('./controllers/routes')
   , locals = require('./base/locals').setLocals
   , path = require('path');
@@ -44,7 +44,7 @@ app.post('/', routes.index._);
 
 
 //mongodb
-mongoose.connect('mongodb://localhost/buyme');
+// mongoose.connect('mongodb://localhost/buyme');
 
 
 // server listening
