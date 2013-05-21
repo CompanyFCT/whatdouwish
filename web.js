@@ -40,7 +40,7 @@ if ('development' == app.get('env')) {
 //mappging routes
 app.get('/', routes.index._);
 // app.get('/users', routes.user.list);
-// app.post('/', routes.index);
+app.post('/', routes.index._);
 
 
 //mongodb
