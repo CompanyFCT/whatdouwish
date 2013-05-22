@@ -71,29 +71,36 @@
     <!-- 160 x 192-->
 
     <div>
-        <ul>
-          <% for(var j=0; j<5; j++) {%>
-            <section>
-              <div class="product">
-                <li>
-                  <img src="images/camiseta.jpg"/>
-                    <footer>
-                      <h3>
-                        <p class="name"><%= name %></p>
-                      </h3>
-                      <div class="price">
-                        <% if (oldPrice==null || j%3==0) { %>
-                          <p class="old">DE: R$ <%= oldPrice %></p>
-                        <% } %>
-                        <p>POR: R$ <%= price %></p>
-                        <p>OU ATÉ 2X DE R$ 50,00</p>
-                      <div>
-                    </footer>
-                  </li>
-                </div>
-            </section>
-          <% } %>
-        </ul>
+      <div>
+      <header>
+        <p>HEADER</p>
+      </header>
+      </div>
+      <div id="product-content">
+      <ul>
+        <% for(var j=0; j<15; j++) {%>
+          <section>
+            <div class="product">
+              <li>
+                <img src="images/camiseta.jpg"/>
+                  <footer>
+                    <h3>
+                      <p class="name"><%= name %></p>
+                    </h3>
+                    <div class="price">
+                      <% if (oldPrice==null || j%3==0) { %>
+                        <p class="old">DE: R$ <%= oldPrice %></p>
+                      <% } %>
+                      <p>POR: R$ <%= price %></p>
+                      <p>OU ATÉ 2X DE R$ 50,00</p>
+                    <div>
+                  </footer>
+                </li>
+              </div>
+          </section>
+        <% } %>
+      </ul>
+    </div>
     </div>
   </body>
 </html>
