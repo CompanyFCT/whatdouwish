@@ -16,10 +16,6 @@ window.fbAsyncInit = function() {
     // post made to this page and a reload will trigger a message to the
     // user asking if they want to send data again.
     window.location = window.location;
-
-    FB.api('/me', function(response){
-      console.log(response);
-    });
   });
 
   FB.Canvas.setAutoGrow();
