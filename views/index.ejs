@@ -66,36 +66,26 @@
         <ul>
           <% for(var j=0; j<5; j++) {%>
             <section>
-              <li>
-                <img src="images/camiseta.jpg"/>
-                <footer>
-                  <h3>
-                    <p id="product"><%= name %></p>
-                    <p id="oldPrice">DE: R$ <%= oldPrice %></p>
-                    <p id="price">POR: R$ <%= price %></p>
-                    <p id="discount">OU ATÉ 2X DE R$ 27,95</p>
-                  </h3>
-                </footer>
-              </li>
+              <div class="product">
+                <li>
+                  <img src="images/camiseta.jpg"/>
+                    <footer>
+                      <h3>
+                        <p class="name"><%= name %></p>
+                      </h3>
+                      <div class="price">
+                        <p class="old">DE: R$ <%= oldPrice %></p>
+                        <p>POR: R$ <%= price %></p>
+                        <p>OU ATÉ 2X DE R$ 27,95</p>
+                      <div>
+                    </footer>
+                  </li>
+                </div>
             </section>
           <% } %>
         </ul>
       
-        <ul>
-          <% for(var i=0; i<5; i++) {%>
-            <section>
-              <li>
-                <img src="images/camiseta.jpg"/>
-                <footer>
-                  <h3>
-                    <p id="product">Camiseta Vans AMIGO</p>
-                  </h3>
-                </footer>
-              </li>
-            </section>
-          <% } %>
-        </ul>
-
+ 
 
     </div>
   </body>
