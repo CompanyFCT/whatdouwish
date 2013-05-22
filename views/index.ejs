@@ -4,6 +4,19 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
 
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-41110646-1', 'facebook.com');
+      ga('send', 'pageview');
+
+    </script>
+
+
     <meta charset="utf-8" />
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" /> -->
 
@@ -56,13 +69,9 @@
       }(document, 'script', 'facebook-jssdk'));
     </script>
 
-    <!-- <h1></h1>
-    <p>Welcome to </p> -->
-
     <!-- 160 x 192-->
 
     <div>
-      
         <ul>
           <% for(var j=0; j<5; j++) {%>
             <section>
@@ -74,9 +83,11 @@
                         <p class="name"><%= name %></p>
                       </h3>
                       <div class="price">
-                        <p class="old">DE: R$ <%= oldPrice %></p>
+                        <% if (oldPrice==null || j%3==0) { %>
+                          <p class="old">DE: R$ <%= oldPrice %></p>
+                        <% } %>
                         <p>POR: R$ <%= price %></p>
-                        <p>OU ATÉ 2X DE R$ 27,95</p>
+                        <p>OU ATÉ 2X DE R$ 50,00</p>
                       <div>
                     </footer>
                   </li>
@@ -84,9 +95,6 @@
             </section>
           <% } %>
         </ul>
-      
- 
-
     </div>
   </body>
 </html>
