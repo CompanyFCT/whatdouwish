@@ -16,8 +16,8 @@ exports._ = function(req, res){
   var paginator = new pagination.SearchPaginator({prelink:'/', current: 1, rowsPerPage: 10, totalResult: 30});
 
   var response = {
-    response: {name:'CAMISETA VANS BOGUE', description: 'CAMISETA VANS BOGUE DESC', price: '100', oldPrice: '150'},
-    pagination: paginator.render()
+    response: {name:'CAMISETA VANS BOGUE', description: 'CAMISETA VANS BOGUE DESC', price: '100', oldPrice: '150'}
+    ,pagination: paginator.render()
   }
 
   res.render('index', response);

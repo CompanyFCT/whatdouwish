@@ -17,5 +17,10 @@ exports.setLocals = function(req, res, next){ //<- middleware function
     return '://' + host() + (path || '');
   }
 
+  // pagination = function(count, resultsPerPage, currentPage){
+    // "express-pagination": "0.0.5"
+  //   return (require('express-pagination').paginate)(count, resultsPerPage, currentPage);
+  // }
+
   next();
 }

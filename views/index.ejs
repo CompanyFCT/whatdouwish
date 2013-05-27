@@ -76,31 +76,35 @@
         </header>
       </div>
       <div id="product-content">
+        <% for(var i=0; i<2; i++) {%>
+          <ul>
+            <% for(var j=0; j<5; j++) {%>
+              <section>
+                <div class="product">
+                  <li>
+                    <img src="images/camiseta.jpg"/>
+                      <footer>
+                        <h3>
+                          <p class="name"><%= response.name %></p>
+                        </h3>
+                        <div class="price">
+                          <% if (response.oldPrice==null || j%3==0) { %>
+                            <p class="old">DE: R$ <%= response.oldPrice %></p>
+                          <% } %>
+                          <p>POR: R$ <%= response.price %></p>
+                          <a href="#">compre-me</a>
+                        <div>
+                      </footer>
+                    </li>
+                  </div>
+              </section>
+            <% } %>
+          </ul>
+        <% } %>
         <ul>
-          <% for(var j=0; j<10; j++) {%>
-            <section>
-              <div class="product">
-                <li>
-                  <img src="images/camiseta.jpg"/>
-                    <footer>
-                      <h3>
-                        <p class="name"><%= response.name %></p>
-                      </h3>
-                      <div class="price">
-                        <% if (response.oldPrice==null || j%3==0) { %>
-                          <p class="old">DE: R$ <%= response.oldPrice %></p>
-                        <% } %>
-                        <p>POR: R$ <%= response.price %></p>
-                        <a href="#">compre-me</a>
-                      <div>
-                    </footer>
-                  </li>
-                </div>
-            </section>
-          <% } %>
+          <%-pagination%>
         </ul>
       </div>
-      <%-pagination%>
     </div>
   </body>
 </html>
