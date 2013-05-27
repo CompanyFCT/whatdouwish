@@ -67,39 +67,6 @@
  
     <!-- 160 x 192-->
 
-    <div id="wrap">
-      <div>
-      <header>
-        <div id="fb">
-        <div class="fb-like" data-href="http://damp-fjord-7827.herokuapp.com" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false" />
-        </div>
-      </header>
-      </div>
-      <div id="product-content">
-      <ul>
-        <% for(var j=0; j<15; j++) {%>
-          <section>
-            <div class="product">
-              <li>
-                <img src="images/camiseta.jpg"/>
-                  <footer>
-                    <h3>
-                      <p class="name"><%= name %></p>
-                    </h3>
-                    <div class="price">
-                      <% if (oldPrice==null || j%3==0) { %>
-                        <p class="old">DE: R$ <%= oldPrice %></p>
-                      <% } %>
-                      <p>POR: R$ <%= price %></p>
-                      <a href="#">compre-me</a>
-                    <div>
-                  </footer>
-                </li>
-              </div>
-          </section>
-        <% } %>
-      </ul>
-    </div>
-    </div>
+
   </body>
 </html>
