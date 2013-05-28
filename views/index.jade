@@ -12,9 +12,15 @@ html(xmlns:fb='http://ogp.me/ns/fb#', lang='en')
     link(href='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js', rel='stylesheet', type='text/javascript')
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(href='http://fonts.googleapis.com/css?family=Droid+Sans', rel='stylesheet', type='text/css')
+    
     meta(charset='utf-8')
-
-
+    meta(property="og:title", content='#{settings.facebook.name}')
+    meta(property="og:type", content="website")
+    meta(property="og:url", content="#{url()}")
+    meta(property="og:image", content="#{url('/logo.png')}")
+    meta(property="og:site_name", content="#{settings.facebook.name}")
+    meta(property="og:description", content="Your mall on facebook. Buy Me!")
+    meta(property="fb:app_id", content="#{settings.facebook.app_id}")
 
   body
     #fb-root
