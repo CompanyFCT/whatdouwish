@@ -13,11 +13,9 @@ exports._ = function(req, res){
   //   res.render('index', docs[0]);
   // });
 
-  var paginator = new pagination.SearchPaginator({prelink:'/', current: 1, rowsPerPage: 10, totalResult: 30});
-
   var response = {
     response: {name:'CAMISETA VANS BOGUE', description: 'CAMISETA VANS BOGUE DESC', price: '100', oldPrice: '150'}
-    ,pagination: paginator.render()
+    ,pagination: new pagination.SearchPaginator({prelink:'/', current: 1, rowsPerPage: 10, totalResult: 1000, translator: function(str){return '';}}).render()
   }
 
   res.render('index', response);
