@@ -55,26 +55,5 @@ html(xmlns:fb='http://ogp.me/ns/fb#', lang='en')
         }(document, 'script', 'facebook-jssdk'));
 
     #wrap
-      div
-        header
-          .fb
-            .fb-like(data-href='http://damp-fjord-7827.herokuapp.com', data-send='true', data-layout='button_count', data-width='450', data-show-faces='false')
-
-      #product-content
-        - for(var i=0; i<2; i++)
-          ul.product
-            - for(var j=0; j<5; j++)
-              section
-                .product
-                  li
-                    img(src="images/camiseta.jpg")
-                    footer
-                      h3
-                        p.name #{response.name}
-                      .price
-                        - if (response.oldPrice==null || j%3==0)
-                          p.old DE: R$ #{response.oldPrice}
-                        p POR: R$ #{response.price}
-                        a(href="#")= "compre-me"
-        ul.paginator!= pagination
-
+      include header
+      include product

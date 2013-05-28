@@ -1,0 +1,35 @@
+#product-content
+  .container-fluid
+    - for(var i=0; i<2; i++)
+      .row
+        - for(var j=0; j<5; j++)
+          .span3.product
+            section.product-item
+              img(src="images/camiseta.jpg")
+              footer
+                h3
+                  p.name #{response.name}
+                .price
+                  - if (response.oldPrice==null || j%3==0)
+                    p.old DE: R$ #{response.oldPrice}
+                  p POR: R$ #{response.price}
+                  a(href="#")= "compre-me"
+
+
+
+    //- - for(var i=0; i<2; i++)
+    //-   ul.product
+    //-     - for(var j=0; j<5; j++)
+    //-       section
+    //-         .product
+    //-           li
+    //-             img(src="images/camiseta.jpg")
+    //-             footer
+    //-               h3
+    //-                 p.name #{response.name}
+    //-               .price
+    //-                 - if (response.oldPrice==null || j%3==0)
+    //-                   p.old DE: R$ #{response.oldPrice}
+    //-                 p POR: R$ #{response.price}
+    //-                 a(href="#")= "compre-me"
+    //- ul.paginator!= pagination
