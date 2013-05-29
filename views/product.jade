@@ -15,21 +15,13 @@
                   p POR: R$ #{response.price}
                   a(href="#")= "compre-me"
     .row-fluid
-      .pagination!= pagination
+      .pagination(style="text-align:center;")
+        ul
+          - for(var j=0; j<5; j++)
+              -if (j==0) 
+                li.active
+                  span= (j+1)
+              - else
+                li
+                  a(href="#")= (j+1)
 
-    //- - for(var i=0; i<2; i++)
-    //-   ul.product
-    //-     - for(var j=0; j<5; j++)
-    //-       section
-    //-         .product
-    //-           li
-    //-             img(src="images/camiseta.jpg")
-    //-             footer
-    //-               h3
-    //-                 p.name #{response.name}
-    //-               .price
-    //-                 - if (response.oldPrice==null || j%3==0)
-    //-                   p.old DE: R$ #{response.oldPrice}
-    //-                 p POR: R$ #{response.price}
-    //-                 a(href="#")= "compre-me"
-    //- ul.paginator!= pagination

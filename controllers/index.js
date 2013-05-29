@@ -3,7 +3,7 @@
  * GET home page.
  */
 
-var pagination = require('pagination');
+// var pagination = require('pagination');
 // var Product = require('../models/product.js');
 
 exports._ = function(req, res){
@@ -15,7 +15,7 @@ exports._ = function(req, res){
 
   var response = {
     response: {name:'CAMISETA VANS BOGUE', description: 'CAMISETA VANS BOGUE DESC', price: '100', oldPrice: '150'}
-    ,pagination: new pagination.SearchPaginator({prelink:'/', current: 1, rowsPerPage: 10, totalResult: 1000, translator: function(str){return '';}}).render()
+    // ,pagination: new pagination.SearchPaginator({prelink:'/', current: 1, rowsPerPage: 10, totalResult: 1000, translator: function(str){return '';}}).render()
   }
 
   res.render('index', response);
