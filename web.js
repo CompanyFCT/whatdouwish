@@ -32,10 +32,13 @@ app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-//mappging routes
+//mappging gets routes
 app.get('/', routes.index._);
-// app.get('/users', routes.user.list);
+app.get('/upload/product', routes.upload.product);
+
+//mappging posts routes
 app.post('/', routes.index._);
+app.post('/upload/product', routes.upload.product);
 
 //mongodb
 if ('development' == app.get('env')) {
@@ -43,7 +46,6 @@ if ('development' == app.get('env')) {
   mongoose.connect('mongodb://localhost/buyme');
 } 
 else if ('production' == app.get('env')) {
-  mongoose.connect('mongodb://heroku_app15611687@ds029328.mongolab.com:29328/heroku_app15611687');
 } 
 
 
