@@ -13,7 +13,7 @@
                   - if (response.oldPrice==null || j%3==0)
                     p.old DE: R$ #{response.oldPrice}
                   p POR: R$ #{response.price}
-                  a(href="#myModal", role="button", data-toggle="modal")= "compre-me"
+                  a(href="#productModal", role="button", data-toggle="modal")= "compre-me"
     .row-fluid
       .pagination.pagination-large.paginator
         ul
@@ -27,11 +27,12 @@
 
 
 
-#myModal.modal.hide.fade
+#productModal.modal.hide.fade
   .modal-header
-    button.close("type"="button", "data-dismiss"="modal", "aria-hidden"="true")= "Times"
-    h3= "Modal header"
-  .modal-body= "One fine body…"
+    button.close("type"="button", "data-dismiss"="modal", "aria-hidden"="true")= "x"
+    h3= "CAMISETA VANS BOGUE"
+  .modal-body
+    img(src="images/camiseta.jpg")
   .modal-footer
-    a.btn(href="#")="Close"
-    a.btn.btn-primary(href="#")="Save changes"
+    a.btn(href="#")="Sair"
+    a.btn.btn-primary(href="#")="Adicionar no carrinho"
