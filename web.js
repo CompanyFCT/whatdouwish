@@ -7,7 +7,7 @@
  */
 
 var express = require('express')
-  // , mongoose = require('mongoose')
+  , mongoose = require('mongoose')
   , routes = require('./controllers/routes')
   , locals = require('./base/locals').setLocals
   , path = require('path')
@@ -32,20 +32,20 @@ app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-// development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
-}
-
-
 //mappging routes
 app.get('/', routes.index._);
 // app.get('/users', routes.user.list);
 app.post('/', routes.index._);
 
-
 //mongodb
-// mongoose.connect('mongodb://localhost/buyme');
+if ('development' == app.get('env')) {
+  app.use(express.errorHandler());
+  mongoose.connect('mongodb://localhost/buyme');
+} 
+else if ('production' == app.get('env')) {
+  mongoose.connect('mongodb://localhost/buyme');
+} 
+
 
 
 // server listening

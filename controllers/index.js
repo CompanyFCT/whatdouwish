@@ -3,18 +3,18 @@
  * GET home page.
  */
 
-// var Product = require('../models/product.js');
+var Product = require('../models/product.js');
 
 exports._ = function(req, res){
-  // new Product({name: 'Camiseta VANS BOGUE', description: 'Camiseta VANS tamanho M', price: 100, oldPrice: 150}).save();
+  // var json = {name: 'Camiseta VANS BOGUE', description: 'Camiseta VANS tamanho M', price: 100, oldPrice: 150};
+  // new Product(json).save();
   // console.log();
-  // Product.find(function(err,docs){
-  //   res.render('index', docs[0]);
-  // });
 
-  var response = {
-    response: {name:'CAMISETA VANS BOGUE', description: 'CAMISETA VANS BOGUE DESC', price: '100', oldPrice: '150'}
-  }
+  Product.find(function(err,docs){
+    var response = { response: docs[0] };
+    res.render('index', response);
+  });
 
-  res.render('index', response);
+  // var response = { response: json };
+  // res.render('index', response);
 };
