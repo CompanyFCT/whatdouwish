@@ -43,7 +43,7 @@ if ('development' == app.get('env')) {
   mongoose.connect('mongodb://localhost/buyme');
 } 
 else if ('production' == app.get('env')) {
-  mongoose.connect('mongodb://heroku_app15611687:@ds029328.mongolab.com:29328/heroku_app15611687');
+  mongoose.connect('mongodb://heroku_app15611687@ds029328.mongolab.com:29328/heroku_app15611687');
 } 
 
 
