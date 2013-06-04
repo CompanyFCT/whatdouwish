@@ -13,7 +13,7 @@
                   - if (response.oldPrice==null || j%3==0)
                     p.old DE: R$ #{response.oldPrice}
                   p POR: R$ #{response.price}
-                  a(href="#")= "compre-me"
+                  a(href="#myModal", role="button", data-toggle="modal")= "compre-me"
     .row-fluid
       .pagination.pagination-large.paginator
         ul
@@ -23,4 +23,15 @@
                   span= (j+1)
               - else
                 li
-                  a(href="#")= (j+1)
+                  a(href="?page=#{(j+1)}")= (j+1)
+
+
+
+#myModal.modal.hide.fade
+  .modal-header
+    button.close("type"="button", "data-dismiss"="modal", "aria-hidden"="true")= "Times"
+    h3= "Modal header"
+  .modal-body= "One fine body…"
+  .modal-footer
+    a.btn(href="#")="Close"
+    a.btn.btn-primary(href="#")="Save changes"
