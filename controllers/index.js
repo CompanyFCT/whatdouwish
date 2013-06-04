@@ -6,8 +6,8 @@
 var Product = require('../models/product.js');
 
 exports._ = function(req, res){
-  // var json = {name: 'Camiseta VANS BOGUE', description: 'Camiseta VANS tamanho M', price: 100, oldPrice: 150};
-  // new Product(json).save();
+  var json = {name: 'Camiseta VANS BOGUE', description: 'Camiseta VANS tamanho M', price: 100, oldPrice: 150};
+  new Product(json).save();
   // console.log();
 
   Product.find(function(err,docs){
