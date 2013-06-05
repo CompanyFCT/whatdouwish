@@ -1,6 +1,9 @@
-//FIXME 1: IMPLEMENTS MONGOOSE + MELHORAR ROTAS SE NECESSARIO + FAZER LOGIN COM FACE.
+//FIXME 1: FAZER LOGIN COM FACE SE NECESSARIO
 //FIXME 2: SEE ASYNC LIB
-//FIXME 3: GENERAL ERROR HANDLER
+//FIXME 3: GENERAL ERROR HANDLER/CATCH
+//FIXME 4: IMPROVE ROUTES CONFIG
+//FIXME 5: IMPROVE ENVIRONMENTS CONFIG
+//FIXME 6: MODEL ABSTRACTION / OPERATION ERROR
 
 /**
  * Module dependencies.
@@ -20,6 +23,7 @@ var app = express();
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
+app.set('view options', { layout: true });
 app.set('view engine', 'jade');
 app.set('facebook', {name: 'BuyMe', app_id: '516291248419238', app_secret_id: '40d466313102965fddb33b8ca44b6f9c'});
 app.use(express.favicon());
@@ -32,11 +36,9 @@ app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-//mappging gets routes
+//mapping routes
 app.get('/', routes.index._);
 app.get('/product', routes.product._);
-
-//mappging posts routes
 app.post('/', routes.index._);
 app.post('/product', routes.product._);
 
@@ -52,6 +54,7 @@ app.post('/product', routes.product._);
 //   mongoose.connect(process.env.MONGOLAB_URI);
 // } 
 
+//mongodb config
 var mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost/buyme';
 mongoose.connect(mongoURI, function (err, res) {
   if (err) { 
@@ -66,4 +69,3 @@ mongoose.connect(mongoURI, function (err, res) {
 app.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
-
