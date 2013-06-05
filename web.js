@@ -45,10 +45,11 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
   // mongoose.connect('mongodb://localhost/buyme');
   // jbkpp#123
-  mongoose.connect('mongodb://heroku_app15611687@ds029328.mongolab.com:29328/heroku_app15611687');
+  // mongoose.connect('mongodb://heroku_app15611687@ds029328.mongolab.com:29328/heroku_app15611687');
+  // mongoose.connect('mongodb://heroku_app15611687:jbkpp#123@ds029328.mongolab.com:29328/heroku_app15611687');
 } 
 else if ('production' == app.get('env')) {
-  mongoose.connect('mongodb://heroku_app15611687@ds029328.mongolab.com:29328/heroku_app15611687');
+  mongoose.connect(process.env.MONGOLAB);
 } 
 
 
