@@ -7,6 +7,7 @@ var Product = require('../models/product.js');
 
 exports._ = function(req, res){
   Product.find(function(err,docs){
+    console.log(docs);
 
     var json = null;
     if(docs == undefined){
