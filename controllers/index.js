@@ -9,10 +9,12 @@ exports._ = function(req, res){
   Product.find(function(err,docs){
 
     var json = null;
-    if(docs=='undefined'){
+    if(docs == undefined){
+      console.log('save');
       json = {name: 'Camiseta VANS BOGUE', description: 'Camiseta VANS tamanho M', price: 100, oldPrice: 150};
-      new Product(json).save();
+      new Product(json).save(function (err) {if (err) console.log ('Error on save!' + err)});
     }else{
+      console.log('find');
       json = docs[0];
     }
 
