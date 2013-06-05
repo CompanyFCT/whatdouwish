@@ -40,7 +40,7 @@ app.get('/product', routes.product._);
 app.post('/', routes.index._);
 app.post('/product', routes.product._);
 
-// var mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost/buyme';
+
 // if ('development' == app.get('env')) {
 //   app.use(express.errorHandler());
 //   // mongoose.connect('mongodb://localhost/buyme');
@@ -52,11 +52,12 @@ app.post('/product', routes.product._);
 //   mongoose.connect(process.env.MONGOLAB_URI);
 // } 
 
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/buyme', function (err, res) {
+var mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost/buyme';
+mongoose.connect(mongoURI, function (err, res) {
   if (err) { 
-    console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+    console.log ('ERROR connecting to: ' + mongoURI + '. ' + err);
   } else {
-    console.log ('Succeeded connected to: ' + uristring);
+    console.log ('Succeeded connected to: ' + mongoURI);
   }
 });
 
