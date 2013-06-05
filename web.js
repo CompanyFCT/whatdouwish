@@ -34,16 +34,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //mappging gets routes
 app.get('/', routes.index._);
-app.get('/upload/product', routes.upload.product);
+app.get('/product', routes.product._);
 
 //mappging posts routes
 app.post('/', routes.index._);
-app.post('/upload/product', routes.upload.product);
+app.post('/product', routes.product._);
 
 //mongodb
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
-  mongoose.connect('mongodb://localhost/buyme');
+  // mongoose.connect('mongodb://localhost/buyme');
+  // jbkpp#123
+  mongoose.connect('mongodb://heroku_app15611687@ds029328.mongolab.com:29328/heroku_app15611687');
 } 
 else if ('production' == app.get('env')) {
 } 
