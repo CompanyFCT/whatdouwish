@@ -10,7 +10,7 @@ exports._ = function(req, res){
     console.log(docs);
 
     var json = null;
-    if(docs == undefined){
+    if(docs.length==0){
       console.log('save');
       json = {name: 'Camiseta VANS BOGUE', description: 'Camiseta VANS tamanho M', price: 100, oldPrice: 150};
       new Product(json).save(function (err) {if (err) console.log ('Error on save!' + err)});
