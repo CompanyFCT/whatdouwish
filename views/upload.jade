@@ -1,7 +1,42 @@
 !!! 5
 html(xmlns:fb='http://ogp.me/ns/fb#', lang='en')
   head
+    link(rel='stylesheet', href='/stylesheets/upload.css')
+    link(href='http://fonts.googleapis.com/css?family=Droid+Sans', rel='stylesheet', type='text/css')
+
+    meta(charset='utf-8')
+
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+    script(src='javascripts/twitter-bootstrap/bootstrap.js')
+    script(src='javascripts/twitter-bootstrap/bootstrap-fileupload.min.js')
 
 
   body
-    h3 #{response}
+    .container-fluid
+      .row-fluid
+        .span2
+          h3 Register
+          h3 Collections
+
+        .span10
+          form.form-horizontal
+            .control-group
+              label.control-label(for="inputCollection") Collection
+              .controls
+                input#inputCollection(type="text", placeholder="Collection")
+            .control-group
+              label.control-label(for="inputPhotos") Photos
+              .controls
+                .fileupload.fileupload-new(data-provides="fileupload")
+                  .fileupload-preview.thumbnail(style="width: 200px; height: 150px;")
+                  div
+                    span.btn.btn-file
+                      span.fileupload-new Select image
+                      span.fileupload-exists Change
+                      input(type="file")
+                    a.btn.fileupload-exists(href="#", data-dismiss="fileupload") Remove
+
+
+            .form-actions.form-btn
+              button.btn.btn-cancel(type="button") Cancel
+              button.btn.btn-primary(type="submit") Upload Now!
