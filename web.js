@@ -37,10 +37,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 //mapping routes
-app.get('/', routes.index._);
-app.get('/product', routes.product._);
-app.post('/', routes.index._);
-app.post('/product', routes.product._);
+app.get('/', routes.render.index._);
+app.get('/product', routes.render.product._);
+app.get('/api/product', routes.api.product.getProducts);
+app.post('/', routes.render.index._);
+app.post('/product', routes.render.product._);
 
 
 // if ('development' == app.get('env')) {

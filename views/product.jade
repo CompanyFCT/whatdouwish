@@ -1,31 +1,30 @@
 .product-content
   .container-fluid
-    - for(var i=0; i<2; i++)
-      .row-fluid
-        - for(var j=0; j<5; j++)
-          .span2.product
-            section.product-item
-              img(src="images/camiseta.jpg")
-              footer
-                h3
-                  p.name #{response.name}
-                .price
-                  - if (response.oldPrice==null || j%3==0)
-                    p.old DE: R$ #{response.oldPrice}
-                  p POR: R$ #{response.price}
-                  a(href="#productModal", role="button", data-toggle="modal")= "compre-me"
+    #product-container
+      - for(var i=0; i<2; i++)
+        .row-fluid
+          - for(var j=0; j<5; j++)
+            .span2.product
+              section.product-item
+                img(src="images/camiseta.jpg")
+                footer
+                  h3
+                    p.name #{response.name}
+                  .price
+                    - if (response.oldPrice==null || j%3==0)
+                      p.old DE: R$ #{response.oldPrice}
+                    p POR: R$ #{response.price}
+                    a(href="#productModal", role="button", data-toggle="modal")= "compre-me"
     .row-fluid
       .pagination.pagination-large.paginator
         ul
           - for(var j=0; j<5; j++)
-              -if (j==0) 
+              -if (j==0)
                 li.active
-                  span= (j+1)
+                  a(href="#")= (j+1)
               - else
                 li
-                  a(href="?page=#{(j+1)}")= (j+1)
-
-
+                  a(href="#")= (j+1)
 
 #productModal.modal.hide.fade
   .modal-header
@@ -36,3 +35,59 @@
   .modal-footer
     a.btn(href="#")="Sair"
     a.btn.btn-primary(href="#")="Adicionar no carrinho"
+
+
+script
+  $(document).ready(function(){
+   $("div.pagination li a").click(function(e) {
+    var target = $(e.target);
+
+    if(target.parent("li.active")[0]) return false; //workaround to evict handle swicth between span and a
+
+    $.ajax({
+      type: "get",
+      url: "/api/product",
+      data: ('page=' + target.text()),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function(data){
+        // handling links and selectors!
+        var currentLink = $("div.pagination li.active a");
+        currentLink.parent("li").removeClass("active");
+        target.parent("li").addClass("active");
+
+        //handle response data..
+        $("div#product-container").remove();
+
+        //use other way do this!!
+        var html='<div id="product-container">';
+        for(var i=0;i<2;i++){
+          html+='<div class="row-fluid">';
+          for(var j=0; j<5; j++){
+            html += '<div class="span2 product">' +
+              '<section class="product-item">' +
+                '<img src="images/camiseta.jpg" />' +
+                  '<footer>' +
+                    '<h3>' +
+                      '<p class="name">'+ data.response[0].name +'</p>' +
+                    '</h3>' +
+                    '<div class="price">' +
+                      ((data.response[0].oldPrice==null || j%3==0) ?  '' : '<p class="old"> DE: R$' + data.response[0].oldPrice + '</p>') +
+                      '<p> POR: R$' + data.response[0].price + '</p>' +
+                      '<a href="#productModal" role="button" data-toggle="modal">compre-me</a>' +
+                    '</div>' +
+                  '</footer>' +
+              '</section></div>';
+          }
+        }
+        html += '</div></div>';
+
+        $("div.product-content div.container-fluid").prepend(html);
+      },
+      failure: function(errMsg) {
+        console.log(errMsg);
+      }
+    });
+    return false;
+   });
+  });  

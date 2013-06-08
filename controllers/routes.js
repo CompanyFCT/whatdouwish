@@ -1,3 +1,8 @@
-exports.index = require('./index.js');
-exports.user = require('./user.js');
-exports.product = require('./product.js');
+exports.render = {
+  index: require('./index.js'),
+  product: require('./product.js')
+};
+
+exports.api = {
+  product: require('./api/product.js')
+};
