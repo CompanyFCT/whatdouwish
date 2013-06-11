@@ -19,7 +19,7 @@ $(function () {
     $('#fileupload').fileupload({
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
-        url: '/'
+        url: 'server/php/'
     });
 
     // Enable iframe cross-domain access via redirect option:
@@ -44,7 +44,7 @@ $(function () {
         // Upload server status check for browsers with CORS support:
         if ($.support.cors) {
             $.ajax({
-                url: '/',
+                url: '//jquery-file-upload.appspot.com/',
                 type: 'HEAD'
             }).fail(function () {
                 $('<span class="alert alert-error"/>')

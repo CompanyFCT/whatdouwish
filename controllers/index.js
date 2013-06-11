@@ -12,11 +12,11 @@ exports._ = function(req, res){
 
     if(!errFind){ 
       if(docs.length==0){
-        console.log('save');
+        // if(!prod) console.log('save');
         json = {name: 'Camiseta VANS BOGUE', description: 'Camiseta VANS tamanho M', price: 100, oldPrice: 150};
         new Product(json).save(function (errSave) {if (errSave) console.log ('Error on save!' + errSave); var error = true;});
       }else{
-        console.log('find');
+        // if(!prod) console.log('find');
         json = docs[0];
       }
 
