@@ -23,7 +23,7 @@ html(xmlns:fb='http://ogp.me/ns/fb#', lang='en')
             .control-group
               label.control-label(for="inputCollection") Collection
               .controls
-                input#inputCollection(type="text", placeholder="Collection")
+                input#inputCollection(type="text", placeholder="Name collection here")
             .control-group
               label.control-label(for="inputPhotos") Photos
               .controls
@@ -35,7 +35,22 @@ html(xmlns:fb='http://ogp.me/ns/fb#', lang='en')
                       span.fileupload-exists Change
                       input(type="file")
                     a.btn.fileupload-exists(href="#", data-dismiss="fileupload") Remove
-
+            .control-group
+              label.control-label(for="inputName") Name
+              .controls
+                input#inputName(type="text", placeholder="Clothes name here")
+            .control-group
+              label.control-label(for="inputDesc") Description
+              .controls
+                input#inputDesc(type="text", placeholder="Description here")
+            .control-group
+              label.control-label(for="inputPrice") Price
+              .controls
+                input#inputPrice(type="text", placeholder="Input price here")
+            .control-group
+              label.control-label(for="inputNewPrice") New price
+              .controls
+                input#inputNewPrice(type="text", placeholder="Input new price here")
 
             .form-actions.form-btn
               button.btn.btn-cancel(type="button") Cancel
