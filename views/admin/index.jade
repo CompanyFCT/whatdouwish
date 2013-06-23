@@ -1,0 +1,26 @@
+!!! 5
+html(xmlns:fb='http://ogp.me/ns/fb#', lang='en')
+  head
+    link(rel='stylesheet', href='/stylesheets/admin.css')
+    link(href='//fonts.googleapis.com/css?family=Droid+Sans', rel='stylesheet', type='text/css')
+    link(rel="stylesheet", href="/stylesheets/twitter-bootstrap/bootstrap.css")
+    //-  Bootstrap Image Gallery styles
+    link(rel="stylesheet", href="/stylesheets/uploader/bootstrap-image-gallery.min.css")
+    //- CSS to style the file input field as button and adjust the Bootstrap progress bars
+    link(rel="stylesheet", href="/stylesheets/uploader/jquery.fileupload-ui.css")
+    //- CSS adjustments for browsers with JavaScript disabled 
+    noscript
+      link(rel="stylesheet", href="/stylesheets/uploader/jquery.fileupload-ui-noscript.css")
+
+    meta(charset='utf-8')
+
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+
+  body
+    - if (typeof(logged)!="undefined" && logged)
+      include content
+
+    - else
+      include login
+
+

@@ -1,8 +1,3 @@
-exports.render = {
-  index: require('./index.js'),
-  product: require('./product.js')
-};
-
-exports.api = {
-  product: require('./api/product.js')
-};
+exports.index = require('./index.js');
+exports.admin = require('./admin.js');
+exports.api = require('./api/product.js');

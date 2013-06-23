@@ -29,6 +29,10 @@ app.set('facebook', {name: 'BuyMe', app_id: '516291248419238', app_secret_id: '4
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
+
+app.use(express.cookieParser('12345678'));
+app.use(express.session({ secret: '123456' }));
+
 app.use(express.methodOverride());
 app.use(locals);
 app.use(app.router);  
@@ -37,11 +41,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 //mapping routes
-app.get('/', routes.render.index._);
-app.get('/product', routes.render.product._);
-app.get('/api/product', routes.api.product.getProducts);
-app.post('/', routes.render.index._);
-app.post('/product', routes.render.product._);
+app.get('/', routes.index._);
+app.get('/api/product', routes.api.getProducts);
+
+app.get('/logout', routes.admin.logout);
+app.get('/admin', routes.admin._);
+app.post('/login', routes.admin.login);
+
+app.post('/', routes.index._);
+// app.post('/product', routes.render.product._);
 
 
 // if ('development' == app.get('env')) {
